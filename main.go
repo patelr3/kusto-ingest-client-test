@@ -20,13 +20,16 @@ const (
 	KustoURL = "https://ravpateadx.eastus.kusto.windows.net"
 )
 
+// AuthType is the authentication mechanism to use when
+// interacting with the Kusto cluster.
 type AuthType int
 
 const (
-	BearerToken AuthType = iota
-	Interactive
+	BearerToken AuthType = iota // Use a user's bearer token (will prompt for login)
+	Interactive                 // Uses your existing az login credentials (or prompts for login if needed)
 )
 
+// String returns the string representation of the AuthType.
 func (a AuthType) String() string {
 	switch a {
 	case BearerToken:
